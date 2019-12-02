@@ -1,0 +1,13 @@
+extends:
+  - airbnb-base
+
+plugins:
+  - jest
+
+rules:
+  max-len:
+    - error
+    - code: 120
+
+env:
+  jest/globals: true
