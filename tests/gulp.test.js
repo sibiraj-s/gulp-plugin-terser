@@ -1,7 +1,6 @@
 const path = require('path');
 const fs = require('fs');
 
-const del = require('del');
 const gulp = require('gulp');
 const Terser = require('terser');
 
@@ -22,8 +21,7 @@ const targetMinFile = path.resolve(tempOutputDir, targetMinFileName);
 const targetMapFile = path.resolve(tempOutputDir, targetMapFileName);
 
 const cleanOutputDir = async () => {
-  const deletedFilePaths = await del(tempOutputDir);
-  return deletedFilePaths;
+  await fs.promises.rmdir(tempOutputDir, { recursive: true });
 };
 
 const JEST_TIMEOUT = 10 * 1000;
