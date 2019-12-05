@@ -7,7 +7,7 @@ const PLUGIN_NAME = 'terser';
 const DEFAULT_SUFFIX = '.min.js';
 
 module.exports = function terser(options = {}) {
-  function transform(file, encoding, callback) {
+  function transform(file, _, callback) {
     if (file.isNull()) {
       return callback(null, file);
     }
