@@ -26,7 +26,6 @@
   "dependencies": {
     "plugin-error": "^1.0.1",
     "through2": "^3.0.1",
-    "vinyl": "^2.2.0",
     "vinyl-sourcemaps-apply": "^0.2.1"
   },
   "devDependencies": {
@@ -41,6 +40,7 @@
     "jest": "^24.9.0",
     "jest-extended": "^0.11.2",
     "lint-staged": "^9.5.0",
-    "terser": "^4.4.2"
+    "terser": "^4.4.2",
+    "vinyl": "^2.2.0"
   }
 }

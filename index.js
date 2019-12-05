@@ -1,7 +1,6 @@
 const through = require('through2');
 const PluginError = require('plugin-error');
 const Terser = require('terser');
-const Vinly = require('vinyl');
 const applySourceMap = require('vinyl-sourcemaps-apply');
 
 const PLUGIN_NAME = 'terser';
@@ -18,7 +17,7 @@ module.exports = function terser(options = {}) {
       return callback(error);
     }
 
-    const outputFile = new Vinly(file);
+    const outputFile = file.clone();
     const code = outputFile.contents.toString();
 
     if (outputFile.path && options.suffix !== false) {
