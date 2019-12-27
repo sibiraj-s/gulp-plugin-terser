@@ -13,6 +13,12 @@ All notable changes to this project will be documented in this file.
 > - Internal
 > - Unreleased
 
+## v1.1.1 (2019-12-27)
+
+#### Bug Fixes
+
+- publish typings file to npm registry ([d3fd846](https://github.com/sibiraj-s/gulp-plugin-terser/commit/d3fd846))
+
 ## v1.1.0 (2019-12-27)
 
 #### Features
