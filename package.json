@@ -2,16 +2,19 @@
   "name": "gulp-plugin-terser",
   "version": "1.0.1",
   "description": "Gulp plugin to minify files with terser",
-  "main": "index.js",
   "author": "sibiraj-s",
   "license": "MIT",
   "repository": "https://github.com/sibiraj-s/gulp-plugin-terser.git",
   "bugs": "https://github.com/sibiraj-s/gulp-plugin-terser/issues",
   "homepage": "https://github.com/sibiraj-s/gulp-plugin-terser#readme",
+  "main": "index.js",
+  "types": "index.d.ts",
   "keywords": [
     "gulp",
     "terser",
-    "minify"
+    "minify",
+    "gulp-plugin",
+    "gulp-terser"
   ],
   "files": [
     "index.js"
