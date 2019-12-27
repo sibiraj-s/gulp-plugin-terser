@@ -33,7 +33,7 @@ function minify() {
     }
   };
 
-  gulp
+  return gulp
     .src('dist/*.js')
     .pipe(sourcemap.init())
     .pipe(terser(options))
