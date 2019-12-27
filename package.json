@@ -17,7 +17,8 @@
     "gulp-terser"
   ],
   "files": [
-    "index.js"
+    "index.js",
+    "index.d.ts"
   ],
   "scripts": {
     "test": "jest"
