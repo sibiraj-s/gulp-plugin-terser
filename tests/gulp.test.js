@@ -30,6 +30,14 @@ jest.setTimeout(JEST_TIMEOUT);
 beforeEach(cleanOutputDir);
 afterEach(cleanOutputDir);
 
+let executionPromise;
+let done;
+beforeEach(() => {
+  executionPromise = new Promise((resolve) => {
+    done = resolve;
+  });
+});
+
 const minify = async (filePath, options = {}) => {
   const rawCode = await fs.promises.readFile(filePath, DEFAULT_ENCODING);
   const result = Terser.minify(rawCode, options);
@@ -41,7 +49,7 @@ const readFile = async (filePath) => {
   return file.trim();
 };
 
-it('should minify the file', async (done) => {
+it('should minify the file', async () => {
   const t = await minify(srcFile);
 
   const onRecieveData = (file) => {
@@ -54,9 +62,11 @@ it('should minify the file', async (done) => {
     .pipe(terser())
     .once('data', onRecieveData)
     .on('end', done);
+
+  await executionPromise;
 });
 
-it('should minify the file with sourcemaps', async (done) => {
+it('should minify the file with sourcemaps', async () => {
   const t = await minify(srcFile);
 
   const onRecieveData = (file) => {
@@ -70,9 +80,11 @@ it('should minify the file with sourcemaps', async (done) => {
     .pipe(terser())
     .once('data', onRecieveData)
     .on('end', done);
+
+  await executionPromise;
 });
 
-it('should minify the file and create sourcemap and write them to the temp directory', async (done) => {
+it('should minify the file and create sourcemap and write them to the temp directory', async () => {
   const terserOptions = {
     sourceMap: {
       filename: targetMinFileName,
@@ -98,9 +110,11 @@ it('should minify the file and create sourcemap and write them to the temp direc
     .pipe(sourcemaps.write('/'))
     .pipe(gulp.dest(tempOutputDir))
     .on('end', onFinish);
+
+  await executionPromise;
 });
 
-it('should create sourcemaps with built-in sourcemap support', async (done) => {
+it('should create sourcemaps with built-in sourcemap support', async () => {
   const terserOptions = {
     sourceMap: {
       filename: targetMinFileName,
@@ -124,9 +138,11 @@ it('should create sourcemaps with built-in sourcemap support', async (done) => {
     .pipe(terser())
     .pipe(gulp.dest(tempOutputDir, { sourcemaps: '.' }))
     .on('end', onFinish);
+
+  await executionPromise;
 });
 
-it('should minify the file and should not create sourcemap by enabling it in terserOptions', async (done) => {
+it('should minify the file and should not create sourcemap by enabling it in terserOptions', async () => {
   const options = {
     terserOptions: {
       sourceMap: true,
@@ -144,9 +160,11 @@ it('should minify the file and should not create sourcemap by enabling it in ter
     .pipe(terser(options))
     .on('data', onRecieveData)
     .on('end', done);
+
+  await executionPromise;
 });
 
-it('should minify the file with given options', async (done) => {
+it('should minify the file with given options', async () => {
   const options = {
     terserOptions: {
       output: {
@@ -166,9 +184,11 @@ it('should minify the file with given options', async (done) => {
     .pipe(terser(options))
     .on('data', onRecieveData)
     .on('end', done);
+
+  await executionPromise;
 });
 
-it('should throw error when minification fails', async (done) => {
+it('should throw error when minification fails', async () => {
   gulp.src(fixtures('invalidjs'))
     .pipe(terser())
     .once('error', (err) => {
@@ -176,9 +196,11 @@ it('should throw error when minification fails', async (done) => {
       expect(err.name).toBe('SyntaxError');
       done();
     });
+
+  await executionPromise;
 });
 
-it('should not support streams', async (done) => {
+it('should not support streams', async () => {
   gulp.src(srcFile, { buffer: false })
     .pipe(terser())
     .once('error', (err) => {
@@ -186,9 +208,11 @@ it('should not support streams', async (done) => {
       expect(err.plugin).toBe('terser');
       done();
     });
+
+  await executionPromise;
 });
 
-it('should emit file with default suffix', async (done) => {
+it('should emit file with default suffix', async () => {
   const options = {
     suffix: true,
   };
@@ -199,9 +223,11 @@ it('should emit file with default suffix', async (done) => {
       expect(file.path).toEndWith('.min.js');
     })
     .on('end', done);
+
+  await executionPromise;
 });
 
-it('should emit file with original file suffix', async (done) => {
+it('should emit file with original file suffix', async () => {
   const options = {
     suffix: false,
   };
@@ -213,9 +239,11 @@ it('should emit file with original file suffix', async (done) => {
       expect(file.path).toBe(srcFile);
     })
     .on('end', done);
+
+  await executionPromise;
 });
 
-it('should write file at the given destination when suffix is disabled', async (done) => {
+it('should write file at the given destination when suffix is disabled', async () => {
   const options = {
     suffix: false,
   };
@@ -229,9 +257,11 @@ it('should write file at the given destination when suffix is disabled', async (
       expect(file.path).toBe(expectedOutFilePath);
     })
     .on('end', done);
+
+  await executionPromise;
 });
 
-it('should emit file with given suffix', async (done) => {
+it('should emit file with given suffix', async () => {
   const options = {
     suffix: '.minified.js',
   };
@@ -244,4 +274,6 @@ it('should emit file with given suffix', async (done) => {
       expect(file.path).not.toEndWith('.jsx');
     })
     .on('end', done);
+
+  await executionPromise;
 });

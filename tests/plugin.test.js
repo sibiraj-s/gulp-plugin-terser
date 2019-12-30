@@ -8,7 +8,15 @@ const TerserPlugin = require('..');
 
 const DEFAULT_ENCODING = 'utf8';
 
-it('should return a buffer', async (done) => {
+let executionPromise;
+let done;
+beforeEach(() => {
+  executionPromise = new Promise((resolve) => {
+    done = resolve;
+  });
+});
+
+it('should return a buffer', async () => {
   const srcFilePath = path.resolve(__dirname, 'fixtures', 'math.js');
   const srcCode = await fs.promises.readFile(srcFilePath, DEFAULT_ENCODING);
 
@@ -28,9 +36,11 @@ it('should return a buffer', async (done) => {
     expect(result.code).toBe(file.contents.toString());
     done();
   });
+
+  await executionPromise;
 });
 
-it('should do nothing when file content is null', async (done) => {
+it('should do nothing when file content is null', async () => {
   const File = new Vinyl({
     contents: null,
   });
@@ -41,4 +51,6 @@ it('should do nothing when file content is null', async (done) => {
     expect(file.isNull()).toBe(true);
     done();
   });
+
+  await executionPromise;
 });
