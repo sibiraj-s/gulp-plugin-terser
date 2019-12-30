@@ -100,6 +100,32 @@ it('should minify the file and create sourcemap and write them to the temp direc
     .on('end', onFinish);
 });
 
+it('should create sourcemaps with built-in sourcemap support', async (done) => {
+  const terserOptions = {
+    sourceMap: {
+      filename: targetMinFileName,
+      url: targetMapFileName,
+    },
+  };
+
+  const t = await minify(srcFile, terserOptions);
+  expect(t.code).toBeTruthy();
+
+  const onFinish = async () => {
+    const code = await readFile(targetMinFile);
+    const map = await readFile(targetMapFile);
+    expect(t.code).toBe(code);
+    expect(map).toBeTruthy();
+    expect(JSON.parse(map).file).toContain(JSON.parse(t.map).file);
+    done();
+  };
+
+  gulp.src(srcFile, { sourcemaps: true })
+    .pipe(terser())
+    .pipe(gulp.dest(tempOutputDir, { sourcemaps: '.' }))
+    .on('end', onFinish);
+});
+
 it('should minify the file and should not create sourcemap by enabling it in terserOptions', async (done) => {
   const options = {
     terserOptions: {
