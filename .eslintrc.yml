@@ -1,5 +1,6 @@
 extends:
   - airbnb-base
+  - plugin:jest/recommended
 
 plugins:
   - jest
@@ -10,4 +11,5 @@ rules:
     - code: 120
 
 env:
+  node: true
   jest/globals: true
