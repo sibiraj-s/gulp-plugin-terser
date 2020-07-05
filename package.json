@@ -29,22 +29,22 @@
   },
   "dependencies": {
     "plugin-error": "^1.0.1",
-    "through2": "^3.0.1",
+    "through2": "^4.0.2",
     "vinyl-sourcemaps-apply": "^0.2.1"
   },
   "devDependencies": {
-    "@types/jest": "^25.1.4",
-    "eslint": "^6.8.0",
-    "eslint-config-airbnb-base": "^14.1.0",
-    "eslint-plugin-import": "^2.20.1",
-    "eslint-plugin-jest": "^23.8.2",
+    "@types/jest": "^26.0.3",
+    "eslint": "^7.4.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jest": "^23.18.0",
     "gulp": "^4.0.2",
     "gulp-sourcemaps": "^2.6.5",
-    "husky": "^4.2.3",
-    "jest": "^25.1.0",
+    "husky": "^4.2.5",
+    "jest": "^26.1.0",
     "jest-extended": "^0.11.5",
-    "lint-staged": "^10.0.8",
-    "terser": "^4.6.7",
+    "lint-staged": "^10.2.11",
+    "terser": "^4.8.0",
     "vinyl": "^2.2.0"
   }
 }
