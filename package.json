@@ -21,6 +21,7 @@
     "index.d.ts"
   ],
   "scripts": {
+    "lint": "eslint .",
     "test": "jest"
   },
   "peerDependencies": {
@@ -36,6 +37,7 @@
     "@types/jest": "^26.0.3",
     "eslint": "^7.4.0",
     "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-config-pegasus": "^1.0.0",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jest": "^23.18.0",
     "gulp": "^4.0.2",

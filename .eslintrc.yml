@@ -1,14 +1,10 @@
 extends:
   - airbnb-base
   - plugin:jest/recommended
+  - pegasus
 
 plugins:
   - jest
-
-rules:
-  max-len:
-    - error
-    - code: 120
 
 env:
   node: true
