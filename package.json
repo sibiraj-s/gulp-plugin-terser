@@ -34,8 +34,8 @@
     "vinyl-sourcemaps-apply": "^0.2.1"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.3",
-    "eslint": "^7.4.0",
+    "@types/jest": "^26.0.5",
+    "eslint": "^7.5.0",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-config-pegasus": "^1.0.0",
     "eslint-plugin-import": "^2.22.0",
