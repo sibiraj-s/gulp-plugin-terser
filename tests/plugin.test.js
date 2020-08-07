@@ -31,13 +31,14 @@ it('should return a buffer', async () => {
     expect(file.isBuffer()).toBe(true);
     expect(file.isStream()).toBe(false);
 
-    const result = Terser.minify(srcCode);
-    expect(result.error).toBeFalsy();
-    expect(result.code).toBe(file.contents.toString());
-    done();
+    Terser.minify(srcCode).then((result) => {
+      expect(result.code).toBe(file.contents.toString());
+    }).catch((error) => {
+      expect(error).toBeFalsy();
+    }).finally(done);
   });
 
-  await executionPromise;
+  return executionPromise;
 });
 
 it('should do nothing when file content is null', async () => {
@@ -52,5 +53,5 @@ it('should do nothing when file content is null', async () => {
     done();
   });
 
-  await executionPromise;
+  return executionPromise;
 });

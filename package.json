@@ -9,6 +9,9 @@
   "homepage": "https://github.com/sibiraj-s/gulp-plugin-terser#readme",
   "main": "index.js",
   "types": "index.d.ts",
+  "engines": {
+    "node": ">=10"
+  },
   "keywords": [
     "gulp",
     "terser",
@@ -26,7 +29,7 @@
   },
   "peerDependencies": {
     "gulp": "^4",
-    "terser": "^4"
+    "terser": "^5"
   },
   "dependencies": {
     "plugin-error": "^1.0.1",
@@ -46,7 +49,7 @@
     "jest": "^26.2.2",
     "jest-extended": "^0.11.5",
     "lint-staged": "^10.2.11",
-    "terser": "^4.8.0",
+    "terser": "^5.0.0",
     "vinyl": "^2.2.0"
   }
 }
