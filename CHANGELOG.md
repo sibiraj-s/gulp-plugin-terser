@@ -13,6 +13,10 @@ All notable changes to this project will be documented in this file.
 > - Internal
 > - Unreleased
 
+## v2.0.0 (2019-08-07)
+
+- update terser to v5 ([1ff76b2](https://github.com/sibiraj-s/gulp-plugin-terser/commit/1ff76b2))
+
 ## v1.1.1 (2019-12-27)
 
 #### Bug Fixes
