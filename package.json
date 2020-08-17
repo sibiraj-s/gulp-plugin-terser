@@ -37,17 +37,17 @@
     "vinyl-sourcemaps-apply": "^0.2.1"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.9",
+    "@types/jest": "^26.0.10",
     "eslint": "^7.7.0",
     "eslint-config-pegasus": "^1.3.5",
     "eslint-plugin-jest": "^23.20.0",
     "gulp": "^4.0.2",
     "gulp-sourcemaps": "^2.6.5",
     "husky": "^4.2.5",
-    "jest": "^26.2.2",
+    "jest": "^26.4.0",
     "jest-extended": "^0.11.5",
     "lint-staged": "^10.2.11",
-    "terser": "^5.0.0",
+    "terser": "^5.1.0",
     "vinyl": "^2.2.0"
   }
 }
