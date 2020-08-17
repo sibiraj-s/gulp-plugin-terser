@@ -63,7 +63,7 @@ it('should minify the file', async () => {
     .once('data', onRecieveData)
     .on('end', done);
 
-  return executionPromise;
+  await executionPromise;
 });
 
 it('should minify the file with sourcemaps', async () => {
@@ -81,7 +81,7 @@ it('should minify the file with sourcemaps', async () => {
     .once('data', onRecieveData)
     .on('end', done);
 
-  return executionPromise;
+  await executionPromise;
 });
 
 it('should minify the file and create sourcemap and write them to the temp directory', async () => {
@@ -111,7 +111,7 @@ it('should minify the file and create sourcemap and write them to the temp direc
     .pipe(gulp.dest(tempOutputDir))
     .on('end', onFinish);
 
-  return executionPromise;
+  await executionPromise;
 });
 
 it('should create sourcemaps with built-in sourcemap support', async () => {
@@ -139,7 +139,7 @@ it('should create sourcemaps with built-in sourcemap support', async () => {
     .pipe(gulp.dest(tempOutputDir, { sourcemaps: '.' }))
     .on('end', onFinish);
 
-  return executionPromise;
+  await executionPromise;
 });
 
 it('should minify the file and should not create sourcemap by enabling it in terserOptions', async () => {
@@ -152,7 +152,7 @@ it('should minify the file and should not create sourcemap by enabling it in ter
   const t = await minify(srcFile, options.terserOptions);
   expect(t.code).toBeTruthy();
 
-  const onRecieveData = async (file) => {
+  const onRecieveData = (file) => {
     expect(file.sourceMap).toBeFalsy();
   };
 
@@ -161,7 +161,7 @@ it('should minify the file and should not create sourcemap by enabling it in ter
     .on('data', onRecieveData)
     .on('end', done);
 
-  return executionPromise;
+  await executionPromise;
 });
 
 it('should minify the file with given options', async () => {
@@ -176,7 +176,7 @@ it('should minify the file with given options', async () => {
   const t = await minify(srcFile, options.terserOptions);
   expect(t.code).toBeTruthy();
 
-  const onRecieveData = async (file) => {
+  const onRecieveData = (file) => {
     expect(file.sourceMap).toBeFalsy();
   };
 
@@ -185,7 +185,7 @@ it('should minify the file with given options', async () => {
     .on('data', onRecieveData)
     .on('end', done);
 
-  return executionPromise;
+  await executionPromise;
 });
 
 it('should throw error when minification fails', async () => {
@@ -197,7 +197,7 @@ it('should throw error when minification fails', async () => {
       done();
     });
 
-  return executionPromise;
+  await executionPromise;
 });
 
 it('should not support streams', async () => {
@@ -209,7 +209,7 @@ it('should not support streams', async () => {
       done();
     });
 
-  return executionPromise;
+  await executionPromise;
 });
 
 it('should emit file with default suffix', async () => {
@@ -224,7 +224,7 @@ it('should emit file with default suffix', async () => {
     })
     .on('end', done);
 
-  return executionPromise;
+  await executionPromise;
 });
 
 it('should emit file with original file suffix', async () => {
@@ -240,7 +240,7 @@ it('should emit file with original file suffix', async () => {
     })
     .on('end', done);
 
-  return executionPromise;
+  await executionPromise;
 });
 
 it('should write file at the given destination when suffix is disabled', async () => {
@@ -258,7 +258,7 @@ it('should write file at the given destination when suffix is disabled', async (
     })
     .on('end', done);
 
-  return executionPromise;
+  await executionPromise;
 });
 
 it('should emit file with given suffix', async () => {
@@ -275,5 +275,5 @@ it('should emit file with given suffix', async () => {
     })
     .on('end', done);
 
-  return executionPromise;
+  await executionPromise;
 });

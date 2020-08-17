@@ -1,10 +1,12 @@
 extends:
-  - airbnb-base
   - plugin:jest/recommended
   - pegasus
 
 plugins:
   - jest
+
+ignorePatterns:
+  - fixtures/
 
 env:
   node: true
