@@ -37,6 +37,8 @@
     "vinyl-sourcemaps-apply": "^0.2.1"
   },
   "devDependencies": {
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
     "@types/jest": "^26.0.20",
     "eslint": "^7.19.0",
     "eslint-config-pegasus": "^2.0.1",
