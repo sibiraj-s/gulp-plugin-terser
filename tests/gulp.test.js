@@ -21,7 +21,7 @@ const targetMinFile = path.resolve(tempOutputDir, targetMinFileName);
 const targetMapFile = path.resolve(tempOutputDir, targetMapFileName);
 
 const cleanOutputDir = async () => {
-  await fs.promises.rmdir(tempOutputDir, { recursive: true });
+  await fs.promises.rm(tempOutputDir, { recursive: true, force: true });
 };
 
 const JEST_TIMEOUT = 10 * 1000;
