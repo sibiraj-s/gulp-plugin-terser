@@ -29,7 +29,7 @@
     "prepare": "sh ./scripts/install-husky.sh"
   },
   "peerDependencies": {
-    "gulp": "^4",
+    "gulp": "^4.0.0",
     "terser": "^5.0.0"
   },
   "dependencies": {
@@ -41,16 +41,16 @@
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
     "@types/jest": "^26.0.23",
-    "eslint": "^7.28.0",
-    "eslint-config-pegasus": "^2.0.3",
+    "eslint": "^7.30.0",
+    "eslint-config-pegasus": "^2.1.0",
     "eslint-plugin-jest": "^24.3.6",
     "gulp": "^4.0.2",
     "gulp-sourcemaps": "^3.0.0",
-    "husky": "^6.0.0",
-    "jest": "^27.0.4",
+    "husky": "^7.0.1",
+    "jest": "^27.0.6",
     "jest-extended": "^0.11.5",
     "lint-staged": "^11.0.0",
-    "terser": "^5.7.0",
+    "terser": "^5.7.1",
     "vinyl": "^2.2.1"
   }
 }
