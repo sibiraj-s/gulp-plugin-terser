@@ -4,8 +4,6 @@ const fs = require('fs');
 const gulp = require('gulp');
 const Terser = require('terser');
 
-const sourcemaps = require('gulp-sourcemaps');
-
 const terser = require('..');
 
 const tempOutputDir = path.resolve(__dirname, 'temp');
@@ -75,8 +73,7 @@ it('should minify the file with sourcemaps', async () => {
     expect(file.path).toEndWith('.min.js');
   };
 
-  gulp.src(srcFile)
-    .pipe(sourcemaps.init())
+  gulp.src(srcFile, { sourcemaps: true })
     .pipe(terser())
     .once('data', onRecieveData)
     .on('end', done);
@@ -87,7 +84,7 @@ it('should minify the file with sourcemaps', async () => {
 it('should minify the file and create sourcemap and write them to the temp directory', async () => {
   const terserOptions = {
     sourceMap: {
-      filename: targetMinFileName,
+      filename: fixtures(targetMinFileName),
       url: targetMapFileName,
     },
   };
@@ -100,15 +97,14 @@ it('should minify the file and create sourcemap and write them to the temp direc
     const map = await readFile(targetMapFile);
     expect(t.code).toBe(code);
     expect(map).toBeTruthy();
+
     expect(JSON.parse(map).file).toBe(JSON.parse(t.map).file);
     done();
   };
 
-  gulp.src(srcFile)
-    .pipe(sourcemaps.init())
+  gulp.src(srcFile, { sourcemaps: true })
     .pipe(terser())
-    .pipe(sourcemaps.write('/'))
-    .pipe(gulp.dest(tempOutputDir))
+    .pipe(gulp.dest(tempOutputDir, { sourcemaps: '.' }))
     .on('end', onFinish);
 
   await executionPromise;

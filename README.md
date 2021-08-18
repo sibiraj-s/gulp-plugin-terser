@@ -21,7 +21,6 @@ $ yarn add --dev gulp-plugin-terser
 
 const gulp = require('gulp');
 const terser = require('gulp-plugin-terser');
-const sourcemap = require('gulp-sourcemaps');
 
 function minify() {
   const options = {
@@ -34,11 +33,11 @@ function minify() {
   };
 
   return gulp
-    .src('dist/*.js')
+    .src('dist/*.js', { sourcemaps: true })
     .pipe(sourcemap.init())
     .pipe(terser(options))
     .pipe(sourcemap.write('.'))
-    .pipe(gulp.dest('dist/'));
+    .pipe(gulp.dest('dist/', { sourcemaps: '.' }));
 }
 
 gulp.series(minify);
