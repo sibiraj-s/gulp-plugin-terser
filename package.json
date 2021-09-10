@@ -45,11 +45,11 @@
     "eslint-config-pegasus": "^2.1.0",
     "eslint-plugin-jest": "^24.4.0",
     "gulp": "^4.0.2",
-    "husky": "^7.0.1",
-    "jest": "^27.0.6",
+    "husky": "^7.0.2",
+    "jest": "^27.1.1",
     "jest-extended": "^0.11.5",
     "lint-staged": "^11.1.2",
-    "terser": "^5.7.1",
+    "terser": "^5.7.2",
     "vinyl": "^2.2.1"
   }
 }
