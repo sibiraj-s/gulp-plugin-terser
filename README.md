@@ -1,4 +1,4 @@
-# gulp-plugin-terser [![Tests](https://github.com/sibiraj-s/gulp-plugin-terser/workflows/Tests/badge.svg)](https://github.com/sibiraj-s/gulp-plugin-terser/actions)
+# gulp-plugin-terser [![Tests](https://github.com/sibiraj-s/gulp-plugin-terser/workflows/Tests/badge.svg)](https://github.com/sibiraj-s/gulp-plugin-terser/actions) [![Version](https://badgen.net/npm/v/gulp-plugin-terser)](https://npm.im/gulp-plugin-terser)
 
 > Gulp plugin to minify files with terser
 
