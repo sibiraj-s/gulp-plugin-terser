@@ -1,10 +1,9 @@
-const path = require('path');
-const fs = require('fs');
-
+const path = require('node:path');
+const fs = require('node:fs/promises');
 const gulp = require('gulp');
 const Terser = require('terser');
 
-const terser = require('..');
+const terser = require('../index.js');
 
 const tempOutputDir = path.resolve(__dirname, 'temp');
 const DEFAULT_ENCODING = 'utf8';
@@ -19,7 +18,7 @@ const targetMinFile = path.resolve(tempOutputDir, targetMinFileName);
 const targetMapFile = path.resolve(tempOutputDir, targetMapFileName);
 
 const cleanOutputDir = async () => {
-  await fs.promises.rm(tempOutputDir, { recursive: true, force: true });
+  await fs.rm(tempOutputDir, { recursive: true, force: true });
 };
 
 const JEST_TIMEOUT = 10 * 1000;
@@ -37,13 +36,13 @@ beforeEach(() => {
 });
 
 const minify = async (filePath, options = {}) => {
-  const rawCode = await fs.promises.readFile(filePath, DEFAULT_ENCODING);
+  const rawCode = await fs.readFile(filePath, DEFAULT_ENCODING);
   const result = await Terser.minify(rawCode, options);
   return result;
 };
 
 const readFile = async (filePath) => {
-  const file = await fs.promises.readFile(filePath, DEFAULT_ENCODING);
+  const file = await fs.readFile(filePath, DEFAULT_ENCODING);
   return file.trim();
 };
 

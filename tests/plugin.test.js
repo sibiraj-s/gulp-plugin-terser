@@ -1,10 +1,9 @@
-const path = require('path');
-const fs = require('fs');
-
+const path = require('node:path');
+const fs = require('node:fs/promises');
 const Terser = require('terser');
 const Vinyl = require('vinyl');
 
-const TerserPlugin = require('..');
+const TerserPlugin = require('../index.js');
 
 const DEFAULT_ENCODING = 'utf8';
 
@@ -18,7 +17,7 @@ beforeEach(() => {
 
 it('should return a buffer', async () => {
   const srcFilePath = path.resolve(__dirname, 'fixtures', 'math.js');
-  const srcCode = await fs.promises.readFile(srcFilePath, DEFAULT_ENCODING);
+  const srcCode = await fs.readFile(srcFilePath, DEFAULT_ENCODING);
 
   const File = new Vinyl({
     contents: Buffer.from(srcCode),
