@@ -38,17 +38,17 @@
     "vinyl-sourcemaps-apply": "^0.2.1"
   },
   "devDependencies": {
-    "@commitlint/cli": "^15.0.0",
-    "@commitlint/config-conventional": "^15.0.0",
-    "@types/jest": "^27.0.3",
-    "eslint": "^8.3.0",
-    "eslint-config-pegasus": "^3.1.0",
-    "eslint-plugin-jest": "^25.3.0",
+    "@commitlint/cli": "^16.1.0",
+    "@commitlint/config-conventional": "^16.0.0",
+    "@types/jest": "^27.4.0",
+    "eslint": "^8.8.0",
+    "eslint-config-pegasus": "^3.2.0",
+    "eslint-plugin-jest": "^26.0.0",
     "gulp": "^4.0.2",
     "husky": "^7.0.4",
-    "jest": "^27.3.1",
-    "jest-extended": "^1.1.0",
-    "lint-staged": "^12.1.2",
+    "jest": "^27.4.7",
+    "jest-extended": "^2.0.0",
+    "lint-staged": "^12.3.2",
     "terser": "^5.10.0",
     "vinyl": "^2.2.1"
   }
