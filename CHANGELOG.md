@@ -8,10 +8,25 @@ All notable changes to this project will be documented in this file.
 > - Bug Fixes
 > - Performance Improvements
 > - Enhancements
+> - Dependency Updates
 > - Breaking Changes
 > - Documentation
 > - Internal
 > - Unreleased
+
+## v2.1.0 (2022-08-07)
+
+#### Bug Fixes
+
+- make `terserOptions` optional ([beea1e3](https://github.com/sibiraj-s/gulp-plugin-terser/commit/beea1e3))
+
+#### Dependency Updates
+
+- update `plugin-error` to v2.0.0 ([caf5f36](https://github.com/sibiraj-s/gulp-plugin-terser/commit/caf5f36))
+
+#### Documentation
+
+- remove `gulp-sourcemaps` use from README ([3743033](https://github.com/sibiraj-s/gulp-plugin-terser/commit/3743033))
 
 ## v2.0.0 (2019-08-07)
 
