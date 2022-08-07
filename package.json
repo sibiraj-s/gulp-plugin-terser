@@ -33,7 +33,7 @@
     "terser": "^5.0.0"
   },
   "dependencies": {
-    "plugin-error": "^1.0.1",
+    "plugin-error": "^2.0.0",
     "through2": "^4.0.2",
     "vinyl-sourcemaps-apply": "^0.2.1"
   },
