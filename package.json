@@ -50,6 +50,7 @@
     "jest": "^29.5.0",
     "jest-extended": "^4.0.0",
     "lint-staged": "^13.2.3",
+    "publint": "^0.1.15",
     "terser": "^5.18.2",
     "vinyl": "^3.0.0"
   }
