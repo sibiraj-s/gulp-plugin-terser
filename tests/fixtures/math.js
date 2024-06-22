@@ -8,7 +8,7 @@
  */
 export function add(a, b) {
   return a + b;
-};
+}
 
 /**
  * subtract two numbers
@@ -20,4 +20,4 @@ export function add(a, b) {
  */
 export function subtract(a, b) {
   return a - b;
-};
+}

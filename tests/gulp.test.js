@@ -53,15 +53,14 @@ const useFixedSourceMapCode = (code) => {
 it('should minify the file', async () => {
   const t = await minify(srcFile);
 
-  const onRecieveData = (file) => {
-    expect(file.contents.toString()).toBe(t.code);
-    expect(file.sourceMap).toBeUndefined();
-    expect(file.path).toEndWith('.min.js');
-  };
-
-  gulp.src(srcFile)
+  gulp
+    .src(srcFile)
     .pipe(terser())
-    .once('data', onRecieveData)
+    .once('data', (file) => {
+      expect(file.contents.toString()).toBe(t.code);
+      expect(file.sourceMap).toBeUndefined();
+      expect(file.path).toEndWith('.min.js');
+    })
     .on('end', done);
 
   await executionPromise;
@@ -70,15 +69,14 @@ it('should minify the file', async () => {
 it('should minify the file with sourcemaps', async () => {
   const t = await minify(srcFile);
 
-  const onRecieveData = (file) => {
-    expect(file.contents.toString()).toBe(t.code);
-    expect(file.sourceMap).toBeObject();
-    expect(file.path).toEndWith('.min.js');
-  };
-
-  gulp.src(srcFile, { sourcemaps: true })
+  gulp
+    .src(srcFile, { sourcemaps: true })
     .pipe(terser())
-    .once('data', onRecieveData)
+    .once('data', (file) => {
+      expect(file.contents.toString()).toBe(t.code);
+      expect(file.sourceMap).toBeObject();
+      expect(file.path).toEndWith('.min.js');
+    })
     .on('end', done);
 
   await executionPromise;
@@ -105,7 +103,8 @@ it('should minify the file and create sourcemap and write them to the temp direc
     done();
   };
 
-  gulp.src(srcFile, { sourcemaps: true })
+  gulp
+    .src(srcFile, { sourcemaps: true })
     .pipe(terser())
     .pipe(gulp.dest(tempOutputDir, { sourcemaps: '.' }))
     .on('end', onFinish);
@@ -133,7 +132,8 @@ it('should create sourcemaps with built-in sourcemap support', async () => {
     done();
   };
 
-  gulp.src(srcFile, { sourcemaps: true })
+  gulp
+    .src(srcFile, { sourcemaps: true })
     .pipe(terser())
     .pipe(gulp.dest(tempOutputDir, { sourcemaps: '.' }))
     .on('end', onFinish);
@@ -151,13 +151,12 @@ it('should minify the file and should not create sourcemap by enabling it in ter
   const t = await minify(srcFile, options.terserOptions);
   expect(t.code).toBeTruthy();
 
-  const onRecieveData = (file) => {
-    expect(file.sourceMap).toBeFalsy();
-  };
-
-  gulp.src(srcFile)
+  gulp
+    .src(srcFile)
     .pipe(terser(options))
-    .on('data', onRecieveData)
+    .on('data', (file) => {
+      expect(file.sourceMap).toBeFalsy();
+    })
     .on('end', done);
 
   await executionPromise;
@@ -175,20 +174,20 @@ it('should minify the file with given options', async () => {
   const t = await minify(srcFile, options.terserOptions);
   expect(t.code).toBeTruthy();
 
-  const onRecieveData = (file) => {
-    expect(file.sourceMap).toBeFalsy();
-  };
-
-  gulp.src(srcFile)
+  gulp
+    .src(srcFile)
     .pipe(terser(options))
-    .on('data', onRecieveData)
+    .on('data', (file) => {
+      expect(file.sourceMap).toBeFalsy();
+    })
     .on('end', done);
 
   await executionPromise;
 });
 
 it('should throw error when minification fails', async () => {
-  gulp.src(fixtures('invalidjs'))
+  gulp
+    .src(fixtures('invalidjs'))
     .pipe(terser())
     .on('error', (err) => {
       expect(err).toBeTruthy();
@@ -200,7 +199,8 @@ it('should throw error when minification fails', async () => {
 });
 
 it('should not support streams', async () => {
-  gulp.src(srcFile, { buffer: false })
+  gulp
+    .src(srcFile, { buffer: false })
     .on('error', (err) => {
       expect(err.message).toBe('Streams are not supported!');
       expect(err.plugin).toBe('terser');
@@ -216,7 +216,8 @@ it('should emit file with default suffix', async () => {
     suffix: true,
   };
 
-  gulp.src(srcFile)
+  gulp
+    .src(srcFile)
     .pipe(terser(options))
     .once('data', (file) => {
       expect(file.path).toEndWith('.min.js');
@@ -231,7 +232,8 @@ it('should emit file with original file suffix', async () => {
     suffix: false,
   };
 
-  gulp.src(srcFile)
+  gulp
+    .src(srcFile)
     .pipe(terser(options))
     .once('data', (file) => {
       expect(file.path).toEndWith('.js');
@@ -249,7 +251,8 @@ it('should write file at the given destination when suffix is disabled', async (
 
   const expectedOutFilePath = path.resolve(tempOutputDir, srcFileName);
 
-  gulp.src(srcFile)
+  gulp
+    .src(srcFile)
     .pipe(terser(options))
     .pipe(gulp.dest(tempOutputDir))
     .once('data', (file) => {
@@ -265,7 +268,8 @@ it('should emit file with given suffix', async () => {
     suffix: '.minified.js',
   };
 
-  gulp.src(srcFile)
+  gulp
+    .src(srcFile)
     .pipe(terser(options))
     .once('data', (file) => {
       expect(file.path).toEndWith('.minified.js');

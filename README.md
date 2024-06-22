@@ -27,9 +27,9 @@ function minify() {
     suffix: '.min.js',
     terserOptions: {
       output: {
-        comments: true
-      }
-    }
+        comments: true,
+      },
+    },
   };
 
   return gulp

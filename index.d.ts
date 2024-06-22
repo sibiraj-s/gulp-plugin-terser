@@ -1,8 +1,8 @@
-import { MinifyOptions } from 'terser'
+import { MinifyOptions } from 'terser';
 
 interface PluginOptions {
   suffix?: string;
-  terserOptions?: MinifyOptions
+  terserOptions?: MinifyOptions;
 }
 
 declare function terser(options?: PluginOptions): any;

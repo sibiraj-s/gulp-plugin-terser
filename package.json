@@ -48,6 +48,7 @@
     "is-ci": "^3.0.1",
     "jest-extended": "^4.0.2",
     "lint-staged": "^15.2.7",
+    "prettier": "^3.3.2",
     "publint": "^0.2.8",
     "terser": "^5.31.1",
     "vinyl": "^3.0.0",
