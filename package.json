@@ -1,6 +1,6 @@
 {
   "name": "gulp-plugin-terser",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "description": "Gulp plugin to minify files with terser",
   "author": "sibiraj-s",
   "license": "MIT",

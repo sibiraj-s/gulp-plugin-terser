@@ -14,6 +14,12 @@ All notable changes to this project will be documented in this file.
 > - Internal
 > - Unreleased
 
+## v3.0.0 (2024-06-22)
+
+#### Breaking Changes
+
+- require gulp v5 ([07be3d1](https://github.com/sibiraj-s/gulp-plugin-terser/commit/07be3d1))
+
 ## v2.1.0 (2022-08-07)
 
 #### Bug Fixes
