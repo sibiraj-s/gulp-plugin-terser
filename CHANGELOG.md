@@ -14,6 +14,12 @@ All notable changes to this project will be documented in this file.
 > - Internal
 > - Unreleased
 
+## v4.0.1 (2024-06-22)
+
+#### Bug Fixes
+
+- fix package exports ([2790eb9](https://github.com/sibiraj-s/gulp-plugin-terser/commit/2790eb9))
+
 ## v4.0.0 (2024-06-22)
 
 #### Breaking Changes
