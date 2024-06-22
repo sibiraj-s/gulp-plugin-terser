@@ -9,6 +9,7 @@
   "homepage": "https://github.com/sibiraj-s/gulp-plugin-terser#readme",
   "main": "index.js",
   "types": "index.d.ts",
+  "type": "commonjs",
   "engines": {
     "node": ">=16"
   },
@@ -26,7 +27,7 @@
   "scripts": {
     "lint": "eslint . --ignore-path .gitignore",
     "test": "vitest",
-    "prepare": "is-ci || husky install"
+    "prepare": "is-ci || husky"
   },
   "peerDependencies": {
     "gulp": "^5.0.0",
