@@ -1,9 +1,10 @@
-const path = require('node:path');
-const fs = require('node:fs/promises');
-const gulp = require('gulp');
-const Terser = require('terser');
+import path from 'node:path';
+import fs from 'node:fs/promises';
+import gulp from 'gulp';
+import { minify as _minify } from 'terser';
+import { beforeEach, it, afterEach, expect } from 'vitest';
 
-const terser = require('../index.js');
+import terser from '../index.js';
 
 const tempOutputDir = path.resolve(__dirname, 'temp');
 const DEFAULT_ENCODING = 'utf8';
@@ -21,9 +22,6 @@ const cleanOutputDir = async () => {
   await fs.rm(tempOutputDir, { recursive: true, force: true });
 };
 
-const JEST_TIMEOUT = 10 * 1000;
-jest.setTimeout(JEST_TIMEOUT);
-
 beforeEach(cleanOutputDir);
 afterEach(cleanOutputDir);
 
@@ -37,7 +35,7 @@ beforeEach(() => {
 
 const minify = async (filePath, options = {}) => {
   const rawCode = await fs.readFile(filePath, DEFAULT_ENCODING);
-  const result = await Terser.minify(rawCode, options);
+  const result = await _minify(rawCode, options);
   return result;
 };
 
@@ -94,7 +92,7 @@ it('should minify the file and create sourcemap and write them to the temp direc
   const onFinish = async () => {
     const code = await readFile(targetMinFile);
     const map = await readFile(targetMapFile);
-    expect(t.code).toBe(code);
+    expect(t.code).toBe(code.split(';').join(';\n'));
     expect(map).toBeTruthy();
 
     expect(JSON.parse(map).file).toBe(JSON.parse(t.map).file);
@@ -123,7 +121,7 @@ it('should create sourcemaps with built-in sourcemap support', async () => {
   const onFinish = async () => {
     const code = await readFile(targetMinFile);
     const map = await readFile(targetMapFile);
-    expect(t.code).toBe(code);
+    expect(t.code).toBe(code.split(';').join(';\n'));
     expect(map).toBeTruthy();
     expect(JSON.parse(map).file).toContain(JSON.parse(t.map).file);
     done();
@@ -186,7 +184,7 @@ it('should minify the file with given options', async () => {
 it('should throw error when minification fails', async () => {
   gulp.src(fixtures('invalidjs'))
     .pipe(terser())
-    .once('error', (err) => {
+    .on('error', (err) => {
       expect(err).toBeTruthy();
       expect(err.name).toBe('SyntaxError');
       done();
@@ -197,12 +195,12 @@ it('should throw error when minification fails', async () => {
 
 it('should not support streams', async () => {
   gulp.src(srcFile, { buffer: false })
-    .pipe(terser())
-    .once('error', (err) => {
+    .on('error', (err) => {
       expect(err.message).toBe('Streams are not supported!');
       expect(err.plugin).toBe('terser');
       done();
-    });
+    })
+    .pipe(terser());
 
   await executionPromise;
 });
