@@ -8,6 +8,7 @@
   "bugs": "https://github.com/sibiraj-s/gulp-plugin-terser/issues",
   "homepage": "https://github.com/sibiraj-s/gulp-plugin-terser#readme",
   "main": "index.js",
+  "exports": "./index.js",
   "types": "index.d.ts",
   "type": "module",
   "engines": {
