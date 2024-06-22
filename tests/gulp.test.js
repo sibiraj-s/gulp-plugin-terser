@@ -44,6 +44,12 @@ const readFile = async (filePath) => {
   return file.trim();
 };
 
+const useFixedSourceMapCode = (code) => {
+  // @fixme. gulp outputs sourceMappingUrl in same line,
+  // where as terser outputs in a new line.
+  return code.split(';').join(';\n');
+};
+
 it('should minify the file', async () => {
   const t = await minify(srcFile);
 
@@ -92,7 +98,7 @@ it('should minify the file and create sourcemap and write them to the temp direc
   const onFinish = async () => {
     const code = await readFile(targetMinFile);
     const map = await readFile(targetMapFile);
-    expect(t.code).toBe(code.split(';').join(';\n'));
+    expect(t.code).toBe(useFixedSourceMapCode(code));
     expect(map).toBeTruthy();
 
     expect(JSON.parse(map).file).toBe(JSON.parse(t.map).file);
@@ -121,7 +127,7 @@ it('should create sourcemaps with built-in sourcemap support', async () => {
   const onFinish = async () => {
     const code = await readFile(targetMinFile);
     const map = await readFile(targetMapFile);
-    expect(t.code).toBe(code.split(';').join(';\n'));
+    expect(t.code).toBe(useFixedSourceMapCode(code));
     expect(map).toBeTruthy();
     expect(JSON.parse(map).file).toContain(JSON.parse(t.map).file);
     done();
