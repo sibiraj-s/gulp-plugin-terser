@@ -1,7 +1,7 @@
-const through = require('through2');
-const PluginError = require('plugin-error');
-const Terser = require('terser');
-const applySourceMap = require('vinyl-sourcemaps-apply');
+import PluginError from 'plugin-error';
+import { minify } from 'terser';
+import applySourceMap from 'vinyl-sourcemaps-apply';
+import through2 from 'through2';
 
 const PLUGIN_NAME = 'terser';
 const DEFAULT_SUFFIX = '.min.js';
@@ -34,7 +34,7 @@ const TerserPlugin = (options = {}) => {
     }
 
     try {
-      const result = await Terser.minify(code, terserOptions);
+      const result = await minify(code, terserOptions);
       outputFile.contents = Buffer.from(result.code);
 
       if (outputFile.sourceMap && result.map) {
@@ -47,7 +47,7 @@ const TerserPlugin = (options = {}) => {
     return callback(null, outputFile);
   };
 
-  return through.obj(transform);
+  return through2.obj(transform);
 };
 
-module.exports = TerserPlugin;
+export default TerserPlugin;

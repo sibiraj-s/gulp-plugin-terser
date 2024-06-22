@@ -9,7 +9,7 @@
   "homepage": "https://github.com/sibiraj-s/gulp-plugin-terser#readme",
   "main": "index.js",
   "types": "index.d.ts",
-  "type": "commonjs",
+  "type": "module",
   "engines": {
     "node": ">=16"
   },

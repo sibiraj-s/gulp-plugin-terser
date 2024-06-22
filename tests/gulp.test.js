@@ -47,7 +47,7 @@ const readFile = async (filePath) => {
 const useFixedSourceMapCode = (code) => {
   // @fixme. gulp outputs sourceMappingUrl in same line,
   // where as terser outputs in a new line.
-  return code.split(';').join(';\n');
+  return code.split('//# ').join('\n//# ');
 };
 
 it('should minify the file', async () => {
