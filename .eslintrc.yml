@@ -1,8 +1,0 @@
-extends:
-  - pegasus
-
-ignorePatterns:
-  - fixtures/
-
-env:
-  node: true
