@@ -1,5 +1,5 @@
 '*.js':
-  - eslint --fix
+  - oxlint --fix
   - prettier --write
 
 '*.{md,yml}': prettier --write
