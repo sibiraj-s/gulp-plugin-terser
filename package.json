@@ -4,7 +4,7 @@
   "description": "Gulp plugin to minify files with terser",
   "author": "sibiraj-s",
   "license": "MIT",
-  "repository": "https://github.com/sibiraj-s/gulp-plugin-terser.git",
+  "repository": "github:sibiraj-s/gulp-plugin-terser",
   "bugs": "https://github.com/sibiraj-s/gulp-plugin-terser/issues",
   "homepage": "https://github.com/sibiraj-s/gulp-plugin-terser#readme",
   "main": "index.js",
