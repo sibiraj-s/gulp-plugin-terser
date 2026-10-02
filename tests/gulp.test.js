@@ -201,12 +201,12 @@ it('should throw error when minification fails', async () => {
 it('should not support streams', async () => {
   gulp
     .src(srcFile, { buffer: false })
+    .pipe(terser())
     .on('error', (err) => {
       expect(err.message).toBe('Streams are not supported!');
       expect(err.plugin).toBe('terser');
       done();
-    })
-    .pipe(terser());
+    });
 
   await executionPromise;
 });

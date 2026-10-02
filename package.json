@@ -36,22 +36,22 @@
   },
   "dependencies": {
     "plugin-error": "^2.0.1",
-    "through2": "^4.0.2",
+    "through2": "^5.0.11",
     "vinyl-sourcemaps-apply": "^0.2.1"
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.7.1",
-    "@commitlint/config-conventional": "^19.7.1",
-    "gulp": "^5.0.0",
+    "@commitlint/cli": "^21.2.3",
+    "@commitlint/config-conventional": "^21.2.3",
+    "gulp": "^5.0.1",
     "husky": "^9.1.7",
     "is-ci": "^4.1.0",
-    "jest-extended": "^4.0.2",
-    "lint-staged": "^15.4.3",
-    "oxlint": "^0.15.12",
-    "prettier": "^3.5.2",
-    "publint": "^0.3.6",
-    "terser": "^5.39.0",
-    "vinyl": "^3.0.0",
-    "vitest": "^3.0.7"
+    "jest-extended": "^7.0.0",
+    "lint-staged": "^17.6.0",
+    "oxlint": "^1.86.0",
+    "prettier": "^3.9.9",
+    "publint": "^0.3.25",
+    "terser": "^5.51.2",
+    "vinyl": "^3.0.1",
+    "vitest": "^5.0.3"
   }
 }
